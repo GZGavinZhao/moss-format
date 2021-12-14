@@ -13,3 +13,6 @@
 [submodule "external/xxhash-d"]
 	path = external/xxhash-d
 	url = https://gitlab.com/serpent-os/dlang/xxhash-d.git
+[submodule "code-style"]
+	path = code-style
+	url = https://gitlab.com/serpent-os/core/code-style.git
