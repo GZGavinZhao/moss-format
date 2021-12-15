@@ -41,22 +41,22 @@ enum UpstreamType
 struct PlainUpstreamDefinition
 {
     /**
-     * Checksum for the origin.
+     * Checksum for the upstream archive.
      */
     @YamlSchema("hash", true) string hash;
 
     /**
-     * New name for the source in case of conflicts.
+     * New name to rename the saved upstream archive to in case of conflicts.
      */
     @YamlSchema("rename") string rename = null;
 
     /**
-     * Number of leading directories to strip from upstream archive.
+     * Number of leading directories to strip from the upstream archive.
      */
     @YamlSchema("stripdirs") string stripdirs = "0";
 
     /**
-     * Whether to automatically unpack the upstream.
+     * Whether to automatically unpack the upstream archive.
      */
     @YamlSchema("unpack") bool unpack = true;
 
@@ -90,7 +90,7 @@ struct UpstreamDefinition
     UpstreamType type = UpstreamType.Plain;
 
     /**
-     * Origin URI, set from the YAML key automatically.
+     * Upstream URI, set from the YAML key automatically.
      */
     string uri;
 
