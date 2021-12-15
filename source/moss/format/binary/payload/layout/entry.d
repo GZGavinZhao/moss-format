@@ -51,32 +51,48 @@ extern (C) struct LayoutEntry
 {
 align(1):
 
-    /** 4-bytes, endian aware, owning user ID */
+    /**
+     * 4-bytes, endian aware, owning user ID.
+     */
     @AutoEndian uint32_t uid = 0;
 
-    /** 4-bytes, endian aware, owning group ID */
+    /**
+     * 4-bytes, endian aware, owning group ID.
+     */
     @AutoEndian uint32_t gid = 0;
 
-    /** 4-bytes, endian aware, mode/permissions */
+    /**
+     * 4-bytes, endian aware, mode/permissions.
+     */
     @AutoEndian uint32_t mode = 0;
 
-    /** 4-bytes, endian aware, tag for the file meta type (usage) */
+    /**
+     * 4-bytes, endian aware, tag for the file meta type (usage).
+     */
     @AutoEndian uint32_t tag = 0;
 
-    /** 2-bytes, endian aware, length for the source (ID) parameter */
-    @AutoEndian uint16_t sourceLength = 0; /* 2 bytes */
+    /**
+     * 2-bytes, endian aware, length for the source (ID) parameter.
+     */
+    @AutoEndian uint16_t sourceLength = 0;
 
-    /** 2-bytes, endian aware, length for the target (path) parameter */
-    @AutoEndian uint16_t targetLength = 0; /* 2 bytes */
+    /**
+     * 2-bytes, endian aware, length for the target (path) parameter.
+     */
+    @AutoEndian uint16_t targetLength = 0;
 
-    /** 1 byte, type of the destination file */
+    /**
+     * 1 byte, type of the destination file.
+     */
     FileType type = FileType.Unknown;
 
-    /** 11-byte array, reserved padding */
+    /**
+     * 11-byte array, reserved padding.
+     */
     ubyte[11] padding = 0;
 
     /**
-     * Encode the LayoutEntry to the underlying byte buffer
+     * Encode the LayoutEntry to the underlying byte buffer.
      */
     void encode(scope WriterToken wr) @trusted
     {
@@ -94,7 +110,7 @@ align(1):
     }
 
     /**
-     * Encode this entry into a ubyte sequence
+     * Encode this entry into a ubyte sequence.
      */
     ImmutableDatum mossEncode()
     {
@@ -113,7 +129,7 @@ align(1):
     }
 
     /**
-     * Decode the entry itself from a given input stream
+     * Decode the entry itself from a given input stream.
      */
     void decode(scope ReaderToken rd) @trusted
     {
@@ -123,7 +139,7 @@ align(1):
     }
 
     /**
-     * Decode the entry itself from a given ubyte sequence
+     * Decode the entry itself from a given ubyte sequence.
      */
     void mossDecode(in ImmutableDatum rawBytes)
     {

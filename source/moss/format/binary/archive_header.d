@@ -77,24 +77,34 @@ extern (C) struct ArchiveHeader
 {
 align(1):
 
-    /** 4-byte endian-aware field containing the magic number */
+    /**
+     * 4-byte endian-aware field containing the magic number.
+     */
     @AutoEndian uint32_t magic;
 
-    /** 2-byte endian-aware field containing the number of payloads */
+    /**
+     * 2-byte endian-aware field containing the number of payloads.
+     */
     @AutoEndian uint16_t numPayloads;
 
-    /** Padding, reserved, 21 bytes. Abused for an integrity check */
+    /**
+     * Padding, reserved, 21 bytes. Abused for an integrity check.
+     */
     ubyte[21] padding;
 
-    /** 1-byte field denoting the _type_ of archive */
+    /**
+     * 1-byte field denoting the _type_ of archive.
+     */
     MossFileType type; /* 1-byte */
 
-    /** 4-byte endian-aware field containing the format version number */
+    /**
+     * 4-byte endian-aware field containing the format version number.
+     */
     @AutoEndian uint32_t versionNumber;
 
     /**
      * Construct a Header struct and initialise it from the given versionNumber
-     * argument, with sane default values set by default
+     * argument, with sane default values set by default.
      */
     this(uint32_t versionNumber) @safe @nogc nothrow
     {
@@ -106,7 +116,7 @@ align(1):
     }
 
     /**
-     * Encode the ArchiveHeader to the underlying file stream
+     * Encode the ArchiveHeader to the underlying file stream.
      */
     void encode(scope FILE* fp) @trusted
     {
@@ -128,7 +138,7 @@ align(1):
     }
 
     /**
-     * Decode this ArchiveHeader from the underlying file stream
+     * Decode this ArchiveHeader from the underlying file stream.
      */
     uint64_t decode(scope ubyte[] byteStream) @trusted
     {
@@ -147,7 +157,7 @@ align(1):
     }
 
     /**
-     * Ensure that a ArchiveHeader is actually valid before proceeding
+     * Ensure that a ArchiveHeader is actually valid before proceeding.
      */
     void validate() @safe
     {

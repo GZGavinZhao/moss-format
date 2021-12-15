@@ -29,7 +29,7 @@ public import moss.format.binary.writer.token;
 import zstd : Compressor;
 
 /**
- * The ZstdWriterToken is responsible for zstd stream encoding
+ * The ZstdWriterToken is responsible for zstd stream encoding.
  */
 final class ZstdWriterToken : WriterToken
 {
@@ -37,7 +37,7 @@ final class ZstdWriterToken : WriterToken
     @disable this();
 
     /**
-     * Construct new ZstdWriterToken from the given file pointer
+     * Construct new ZstdWriterToken from the given file pointer.
      */
     this(FILE* fp) @trusted
     {
@@ -47,7 +47,7 @@ final class ZstdWriterToken : WriterToken
     }
 
     /**
-     * Encode data via the zstd APIs
+     * Encode data via the zstd APIs.
      */
     override ubyte[] encodeData(ref ubyte[] data) @trusted
     {
@@ -55,7 +55,7 @@ final class ZstdWriterToken : WriterToken
     }
 
     /**
-     * Flush data via the zstd APIs
+     * Flush data via the zstd APIs.
      */
     override ubyte[] flushData() @trusted
     {

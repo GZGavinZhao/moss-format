@@ -26,7 +26,7 @@ public import moss.format.source.schema;
 
 /**
  * The TuningSelectionType indicates whether we're explicitly
- * enabling, disabling, or enabling and setting to a specific value
+ * enabling, disabling, or enabling and setting to a specific value.
  */
 final enum TuningSelectionType
 {
@@ -36,20 +36,22 @@ final enum TuningSelectionType
 }
 
 /**
- * A TuningSelection corresponds to a TuningGroup
+ * A TuningSelection corresponds to a TuningGroup.
  */
 struct TuningSelection
 {
-    /** Name of the tuning group */
+    /**
+     * Name of the tuning group.
+     */
     string name;
 
     /**
-     * Type of the Tuning Selection
+     * Type of the Tuning Selection.
      */
     TuningSelectionType type = TuningSelectionType.Enable;
 
     /**
-     * Optional configuration value
+     * Optional configuration value.
      */
     string configValue = null;
 }
@@ -71,12 +73,12 @@ struct BuildOptions
      *
      * Turning this on will result in a multiple stage profiling build of the
      * project and execution of the workload, in the hopes of a finer tuned
-     * profile data set
+     * profile data set.
      */
     @YamlSchema("cspgo") bool cspgo = true;
 
     /**
-     * Sample Profile Guided Optimisation
+     * Sample Profile Guided Optimisation.
      *
      * When enabling samplepgo, parts of the code not run during workload will
      * no longer be optimized for size. This is handy when you have an important
@@ -86,18 +88,18 @@ struct BuildOptions
 
     /**
      * Whether to strip ELF files to eliminate unneeded code and reduce file
-     * size
+     * size.
      */
     @YamlSchema("strip") bool strip = true;
 
     /**
      * A set of tuning selections to apply. Constructed at runtime through
-     * parsing
+     * parsing.
      */
     TuningSelection[] tuneSelections = [];
 
     /**
-     * Return true if the tuning selection is present
+     * Return true if the tuning selection is present.
      */
     pure bool hasTuningSelection(string name) @safe
     {

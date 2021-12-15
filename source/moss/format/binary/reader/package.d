@@ -43,7 +43,7 @@ package struct PayloadWrapper
 {
 
     /**
-     * Return the start offset for the Payload
+     * Return the start offset for the Payload.
      */
     pragma(inline, true) pure @property uint64_t start() @safe @nogc nothrow
     {
@@ -51,7 +51,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Set the start offset for the Payload
+     * Set the start offset for the Payload.
      */
     pragma(inline, true) pure @property void start(uint64_t start) @safe @nogc nothrow
     {
@@ -59,7 +59,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Return the end offset for the Payload
+     * Return the end offset for the Payload.
      */
     pragma(inline, true) @property uint64_t end() @safe @nogc nothrow
     {
@@ -67,7 +67,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Return the underlying payload instance
+     * Return the underlying payload instance.
      */
     pragma(inline, true) pure @property Payload payload() @safe @nogc nothrow
     {
@@ -75,7 +75,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Update the Payload instance
+     * Update the Payload instance.
      */
     pragma(inline, true) pure @property void payload(Payload p) @safe @nogc nothrow
     {
@@ -83,7 +83,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Expose Header property
+     * Expose Header property.
      */
     pragma(inline, true) pure @property ref PayloadHeader header() @safe @nogc nothrow return
     {
@@ -91,7 +91,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Set the header explicitly
+     * Set the header explicitly.
      */
     pragma(inline, true) pure @property void header(PayloadHeader header) @safe @nogc nothrow
     {
@@ -99,7 +99,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Return true if we've been loaded before
+     * Return true if we've been loaded before.
      */
     pragma(inline, true) pure @property bool loaded() @safe @nogc nothrow
     {
@@ -107,7 +107,7 @@ package struct PayloadWrapper
     }
 
     /**
-     * Updated loaded status
+     * Updated loaded status.
      */
     pragma(inline, true) pure @property void loaded(bool b) @safe @nogc nothrow
     {
@@ -132,7 +132,7 @@ public final class Reader
     @disable this();
 
     /**
-     * Construct a new Reader for the given filename
+     * Construct a new Reader for the given filename.
      */
     this(File file) @trusted
     {
@@ -170,7 +170,7 @@ public final class Reader
     }
 
     /**
-     * Set userdata up
+     * Set userdata up.
      */
     void setUserData(P : Payload)(void* userData) @trusted
     {
@@ -220,7 +220,7 @@ public final class Reader
     }
 
     /**
-     * Return all matching payloads as a range
+     * Return all matching payloads as a range.
      */
     auto payloads(T : Payload)()
     {
@@ -239,7 +239,7 @@ public final class Reader
     }
 
     /**
-     * Return the first payload matching the given type
+     * Return the first payload matching the given type.
      */
     T payload(T : Payload)()
     {
@@ -287,7 +287,7 @@ public final class Reader
 
     /**
      * unpackContent will write the entire contents of the extraction section to
-     * the given file
+     * the given file.
      */
     void unpackContent(scope Payload p, File outputFile) @trusted
     {
@@ -343,7 +343,7 @@ public final class Reader
     }
 
     /**
-     * Return a copy of the main header struct
+     * Return a copy of the main header struct.
      */
     pure @property ArchiveHeader archiveHeader() @safe @nogc nothrow
     {
@@ -376,7 +376,7 @@ private:
     static TypeInfo[PayloadType] registeredHandlers;
 
     /**
-     * Walk through the payloads in the stream and process them
+     * Walk through the payloads in the stream and process them.
      */
     void iteratePayloads() @trusted
     {
@@ -422,7 +422,7 @@ private:
     }
 
     /**
-     * Load the specified payload on demand
+     * Load the specified payload on demand.
      *
      * We only load a Payload once and only for a Data type storage.
      */
@@ -461,6 +461,9 @@ private:
         wrapper.payload.decode(rt);
     }
 
+    /**
+     * Validate the checksum/hash of the given payload.
+     */
     void validateChecksum(scope PayloadWrapper* wrapper, ref scope ubyte[] data)
     {
         import std.string : format;
@@ -470,7 +473,7 @@ private:
         import std.range : chunks;
         import std.algorithm : each;
 
-        /* Read ahead and verify the CRC64ISO before actually dealing with contents */
+        /* Read ahead and verify the checksum/hash before actually dealing with contents */
         data.chunks(ChunkSize).each!((b) => checksumHelper.put(b));
         auto result = checksumHelper.finish();
 
@@ -484,8 +487,8 @@ private:
 
 /**
  * Simple type to wrap the payload functions and make them automatically
-* load on demand
-*/
+ * load on demand.
+ */
 public struct PayloadReturn
 {
     PayloadHeader pt;
@@ -496,7 +499,7 @@ public struct PayloadReturn
 package:
 
     /**
-     * Construct a new PayloadReturn type
+     * Construct a new PayloadReturn type.
      */
     this(Reader refOwner, PayloadWrapper* wrapper)
     {
@@ -508,7 +511,7 @@ package:
 public:
 
     /**
-     * Return a payload and load it when needed
+     * Return a payload and load it when needed.
      */
     @property Payload payload() @safe
     {

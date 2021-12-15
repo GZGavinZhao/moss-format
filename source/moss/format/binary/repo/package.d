@@ -21,7 +21,7 @@
  */
 
 /**
- * Repository formats
+ * Repository formats.
  */
 module moss.format.binary.repo;
 

@@ -25,7 +25,7 @@ module moss.format.source.upstream_definition;
 public import moss.format.source.schema;
 
 /**
- * Currently supported upstream types
+ * Currently supported upstream types.
  */
 enum UpstreamType
 {
@@ -40,19 +40,29 @@ enum UpstreamType
  */
 struct PlainUpstreamDefinition
 {
-    /** Checksum for the origin */
+    /**
+     * Checksum for the origin.
+     */
     @YamlSchema("hash", true) string hash;
 
-    /** New name for the source in case of conflicts */
+    /**
+     * New name for the source in case of conflicts.
+     */
     @YamlSchema("rename") string rename = null;
 
-    /** Number of directories to strip from tarball */
+    /**
+     * Number of leading directories to strip from upstream archive.
+     */
     @YamlSchema("stripdirs") string stripdirs = "0";
 
-    /** Whether to automatically unpack the source. */
+    /**
+     * Whether to automatically unpack the upstream.
+     */
     @YamlSchema("unpack") bool unpack = true;
 
-    /** Where to extract source file to */
+    /**
+     * Where to extract upstream archive to.
+     */
     @YamlSchema("unpackdir") string unpackdir = ".";
 }
 
@@ -62,7 +72,9 @@ struct PlainUpstreamDefinition
  */
 struct GitUpstreamDefinition
 {
-    /** The ref to clone (i.e. branch, commit) */
+    /** The ref to clone (i.e. branch, commit).
+     *
+     */
     @YamlSchema("ref", true) string refID;
 }
 
@@ -77,15 +89,21 @@ struct UpstreamDefinition
      */
     UpstreamType type = UpstreamType.Plain;
 
-    /** Origin URI, set from the YAML key automatically */
+    /**
+     * Origin URI, set from the YAML key automatically.
+     */
     string uri;
 
     union
     {
-        /** Plain upstream within the union */
+        /**
+         * Plain upstream within the union.
+         */
         PlainUpstreamDefinition plain;
 
-        /** Git upstream within the union */
+        /**
+         * Git upstream within the union.
+         */
         GitUpstreamDefinition git;
     }
 }

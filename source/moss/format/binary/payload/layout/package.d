@@ -27,7 +27,7 @@ import moss.core : FileType;
 import moss.core.encoding;
 
 /**
- * The currently writing version for LayoutPayload
+ * The currently writing version for LayoutPayload.
  */
 const uint16_t layoutPayloadVersion = 1;
 
@@ -43,7 +43,7 @@ final class LayoutPayload : Payload
 public:
 
     /**
-     * Create a new instance of LayoutPayload
+     * Create a new instance of LayoutPayload.
      */
     this() @safe
     {
@@ -51,7 +51,7 @@ public:
     }
 
     /**
-     * We ensure we're registered correctly with the Reader subsystem
+     * We ensure we're registered correctly with the Reader subsystem.
      */
     static this()
     {
@@ -85,7 +85,7 @@ public:
     }
 
     /**
-     * Return the front item of the list
+     * Return the front item of the list.
      */
     EntrySet front() @trusted @nogc nothrow const
     {
@@ -94,7 +94,7 @@ public:
     }
 
     /**
-     * Encode the LayoutPayload to the WriterToken
+     * Encode the LayoutPayload to the WriterToken.
      */
     override void encode(scope WriterToken wr) @trusted
     {
@@ -107,7 +107,7 @@ public:
     }
 
     /**
-     * Decode the LayoutPayload from the ReaderToken
+     * Decode the LayoutPayload from the ReaderToken.
      */
     override void decode(scope ReaderToken rdr) @trusted
     {
@@ -124,7 +124,7 @@ public:
     }
 
     /**
-     * Allow a passing a string as the source (i.e. symlink source)
+     * Allow a passing a string as the source (i.e. symlink source).
      */
     void addLayout(LayoutEntry entry, string fsTarget, in string source = null)
     {

@@ -33,14 +33,18 @@ import moss.format.binary.endianness;
  */
 extern (C) struct KvDatum
 {
-    /** Length of the datum key */
+    /**
+     * Length of the datum key.
+     */
     @AutoEndian uint64_t keyLength;
 
-    /** Length of the datum value */
+    /**
+     * Length of the datum value.
+     */
     @AutoEndian uint64_t valueLength;
 
     /**
-     * Encode the KvDatum to the underlying stream
+     * Encode the KvDatum to the underlying stream.
      */
     void encode(WriterToken wr) @trusted
     {
@@ -52,7 +56,7 @@ extern (C) struct KvDatum
     }
 
     /**
-     * Decode the kvDatum itself from a given input stream
+     * Decode the kvDatum itself from a given input stream.
      */
     void decode(scope ReaderToken rdr) @trusted
     {
@@ -100,7 +104,7 @@ public abstract class KvPairPayload : Payload
     }
 
     /**
-     * Encoding relies on bulk inserts from a helper function in the implementation
+     * Encoding relies on bulk inserts from a helper function in the implementation.
      */
     final override void encode(scope WriterToken wr)
     {
@@ -121,7 +125,7 @@ public abstract class KvPairPayload : Payload
     }
 
     /**
-     * Decoding will grab each KvDatum and pass them to the loadRecord function
+     * Decoding will grab each KvDatum and pass them to the loadRecord function.
      */
     final override void decode(scope ReaderToken rdr)
     {

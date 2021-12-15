@@ -46,47 +46,47 @@ struct Spec
 public:
 
     /**
-     * Source definition
+     * Source definition.
      */
     SourceDefinition source;
 
     /**
-     * Root context build steps
+     * Root context build steps.
      */
     BuildDefinition rootBuild;
 
     /**
-     * Build options
+     * Build options.
      */
     BuildOptions options;
 
     /**
-     * Profile specific build steps
+     * Profile specific build steps.
      */
     BuildDefinition[string] profileBuilds;
 
     /**
-     * Root context package definition
+     * Root context package definition.
      */
     PackageDefinition rootPackage;
 
     /**
-     * Per package definitions
+     * Per package definitions.
      */
     PackageDefinition[string] subPackages;
 
     /**
-     * Set of upstream definitions
+     * Set of upstream definitions.
      */
     UpstreamDefinition[string] upstreams;
 
     /**
-     * Architectures supported within the build
+     * Architectures supported within the build.
      */
     string[] architectures;
 
     /**
-     * Construct a Spec from the given file
+     * Construct a Spec from the given file.
      */
     this(File _file) @safe
     {
@@ -102,7 +102,7 @@ public:
     }
 
     /**
-     * Attempt to parse the input file
+     * Attempt to parse the input file.
      */
     void parse() @system
     {
@@ -137,7 +137,7 @@ public:
     }
 
     /**
-     * Returns true if the architecture is supported by this spec
+     * Returns true if the architecture is supported by this spec.
      */
     pure bool supportedArchitecture(string architecture)
     {
@@ -147,7 +147,7 @@ public:
     }
 
     /**
-     * Expand an UpstreamDefinition with our basic known variable set
+     * Expand an UpstreamDefinition with our basic known variable set.
      */
     UpstreamDefinition expand(UpstreamDefinition up) @trusted
     {
@@ -165,7 +165,7 @@ public:
     }
 
     /**
-     * Return an expanded version of the PackageDefinition
+     * Return an expanded version of the PackageDefinition.
      */
     PackageDefinition expand(PackageDefinition p) @safe
     {
@@ -184,7 +184,7 @@ public:
 private:
 
     /**
-     * Parse all tuning options
+     * Parse all tuning options.
      */
     void parseTuningOptions(ref Node node)
     {
@@ -219,7 +219,7 @@ private:
                 enforce(vals[0].nodeID == NodeID.scalar,
                         "Each tuning option must have 1 scalar value");
                 const auto val = vals[0];
-                try
+                try // FIXME: Change to SumType error type?
                 {
                     const auto bval = val.as!bool;
                     if (bval)
@@ -248,7 +248,7 @@ private:
     }
 
     /**
-     * Find all PackageDefinition instances and set them up
+     * Find all PackageDefinition instances and set them up.
      */
     void parsePackages(ref Node node)
     {
@@ -278,6 +278,9 @@ private:
         }
     }
 
+    /**
+     * Find all architectures and set them up.
+     */
     void parseArchitectures(ref Node node)
     {
         import std.exception : enforce;
@@ -312,7 +315,7 @@ private:
     }
 
     /**
-     * Find all BuildDefinition instances and set them up
+     * Find all BuildDefinition instances and set them up.
      */
     void parseBuilds(ref Node node)
     {
@@ -364,7 +367,7 @@ private:
     }
 
     /**
-     * Find all UpstreamDefinition instances and set them up
+     * Find all UpstreamDefinition instances and set them up.
      */
     void parseUpstreams(ref Node node)
     {

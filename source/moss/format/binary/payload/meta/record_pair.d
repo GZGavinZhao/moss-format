@@ -36,7 +36,7 @@ import moss.format.binary.writer : WriterToken;
 extern (C) package struct RecordPair
 {
     /**
-     * Return the record tag
+     * Return the record tag.
      */
     pure @property RecordTag tag() @safe @nogc nothrow const
     {
@@ -44,7 +44,7 @@ extern (C) package struct RecordPair
     }
 
     /**
-     * Return the record type
+     * Return the record type.
      */
     pure @property RecordType type() @safe @nogc nothrow const
     {
@@ -53,7 +53,7 @@ extern (C) package struct RecordPair
 
     /**
      * Decode ourselves, Record and associated value, from the input
-     * ReaderToken
+     * ReaderToken.
      */
     void decode(scope ReaderToken rdr) @trusted
     {
@@ -72,7 +72,7 @@ extern (C) package struct RecordPair
     }
 
     /**
-     * Encode the RecordPair to the underlying stream
+     * Encode the RecordPair to the underlying stream.
      */
     void encode(scope WriterToken wr) @trusted
     {
@@ -81,8 +81,8 @@ extern (C) package struct RecordPair
     }
 
     /**
-     * Decode underlying value to the type in T
-     * consumers should check .type before doing so
+     * Decode underlying value to the type in T.
+     * Consumers should check .type before doing so.
      */
     pure T get(T)() const
     {

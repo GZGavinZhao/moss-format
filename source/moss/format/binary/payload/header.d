@@ -35,16 +35,24 @@ import moss.format.binary.endianness;
  */
 enum PayloadCompression : uint8_t
 {
-    /** Catch errors: Compression should be known */
+    /**
+     * Catch errors: Compression should be known.
+     */
     Unknown = 0,
 
-    /** Payload has no compression */
+    /**
+     * Payload has no compression.
+     */
     None = 1,
 
-    /** Payload uses ZSTD compression */
+    /**
+     * Payload uses ZSTD compression.
+     */
     Zstd = 2,
 
-    /** Payload uses zlib decompression */
+    /**
+     * Payload uses zlib decompression.
+     */
     Zlib = 3,
 }
 
@@ -60,29 +68,43 @@ extern (C) struct PayloadHeader
 {
 align(1):
 
-    /** 8-bytes, endian aware, length of the Payload data */
+    /**
+     * 8-bytes, endian aware, length of the Payload data.
+     */
     @AutoEndian uint64_t storedSize = 0;
 
-    /** 8-bytes, endian-aware, size of usable Payload data */
+    /**
+     * 8-bytes, endian-aware, size of usable Payload data.
+     */
     @AutoEndian uint64_t plainSize = 0;
 
-    /** 8-byte array containing the XXHash3!64 checksum */
+    /**
+     * 8-byte array containing the XXHash3!64 checksum.
+     */
     ubyte[8] checksum = 0;
 
-    /** 4-bytes, endian aware, number of records within the Payload */
+    /**
+     * 4-bytes, endian aware, number of records within the Payload.
+     */
     @AutoEndian uint32_t numRecords = 0;
 
-    /** 2-bytes, endian aware, numeric version of the Payload */
+    /**
+     * 2-bytes, endian aware, numeric version of the Payload.
+     */
     @AutoEndian uint16_t payloadVersion = 0;
 
-    /** 1 byte denoting the type of this payload */
+    /**
+     * 1 byte denoting the type of this payload.
+     */
     PayloadType type = PayloadType.Unknown;
 
-    /** 1 byte denoting the compression of this payload */
+    /**
+     * 1 byte denoting the compression of this payload.
+     */
     PayloadCompression compression = PayloadCompression.Unknown;
 
     /**
-     * Encode the PayloadHeader to the underlying file stream
+     * Encode the PayloadHeader to the underlying file stream.
      */
     void encode(scope FILE* fp) @trusted
     {
@@ -110,7 +132,7 @@ align(1):
     }
 
     /**
-     * Decode this PayloadHeader from the underlying file stream
+     * Decode this PayloadHeader from the underlying file stream.
      */
     uint64_t decode(scope ubyte[] byteStream) @trusted
     {

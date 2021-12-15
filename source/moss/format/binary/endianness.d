@@ -26,7 +26,7 @@ import std.bitmanip;
 import std.stdint;
 
 /**
- * Internal type to auto convert uint64
+ * Internal type to auto convert uint64.
  */
 package union autoEndianUint64
 {
@@ -41,7 +41,7 @@ package union autoEndianUint64
     }
 
     /**
-     * On little-endian systems, convert to big-endian (network order)
+     * On little-endian systems, convert to big-endian (network order).
      */
     pragma(inline, true) pure void toNetworkOrder() @safe @nogc nothrow
     {
@@ -52,7 +52,7 @@ package union autoEndianUint64
     }
 
     /**
-     * On little-endian systems, convert back to little-endian (host order)
+     * On little-endian systems, convert back to little-endian (host order).
      */
     pragma(inline, true) pure void toHostOrder() @safe @nogc nothrow
     {
@@ -64,7 +64,7 @@ package union autoEndianUint64
 }
 
 /**
- * Internal type to auto convert uint32
+ * Internal type to auto convert uint32.
  */
 package union autoEndianUint32
 {
@@ -79,7 +79,7 @@ package union autoEndianUint32
     }
 
     /**
-     * On little-endian systems, convert to big-endian (network order)
+     * On little-endian systems, convert to big-endian (network order).
      */
     pragma(inline, true) pure void toNetworkOrder() @safe @nogc nothrow
     {
@@ -90,7 +90,7 @@ package union autoEndianUint32
     }
 
     /**
-     * On little-endian systems, convert back to little-endian (host order)
+     * On little-endian systems, convert back to little-endian (host order).
      */
     pragma(inline, true) pure void toHostOrder() @safe @nogc nothrow
     {
@@ -102,7 +102,7 @@ package union autoEndianUint32
 }
 
 /**
- * Internal type to auto convert uint16
+ * Internal type to auto convert uint16.
  */
 package union autoEndianUint16
 {
@@ -117,7 +117,7 @@ package union autoEndianUint16
     }
 
     /**
-     * On little-endian systems, convert to big-endian (network order)
+     * On little-endian systems, convert to big-endian (network order).
      */
     pragma(inline, true) pure void toNetworkOrder() @safe @nogc nothrow
     {
@@ -128,7 +128,7 @@ package union autoEndianUint16
     }
 
     /**
-     * On little-endian systems, convert back to little-endian (host order)
+     * On little-endian systems, convert back to little-endian (host order).
      */
     pragma(inline, true) pure void toHostOrder() @safe @nogc nothrow
     {
@@ -140,14 +140,14 @@ package union autoEndianUint16
 }
 
 /**
- * UDA to assist with translation between endian
+ * UDA to assist with translation between endian formats.
  */
 struct AutoEndian
 {
 }
 
 /**
- * Return the correct endian helper for uint64_t
+ * Return the correct endian helper for uint64_t.
  */
 static pure auto autoEndianConvert(uint64_t v) @safe @nogc nothrow
 {
@@ -155,7 +155,7 @@ static pure auto autoEndianConvert(uint64_t v) @safe @nogc nothrow
 }
 
 /**
- * Return the correct endian helper for uint32_t
+ * Return the correct endian helper for uint32_t.
  */
 static pure auto autoEndianConvert(uint32_t v) @safe @nogc nothrow
 {
@@ -163,7 +163,7 @@ static pure auto autoEndianConvert(uint32_t v) @safe @nogc nothrow
 }
 
 /**
- * Return the correct endian helper for uint16_t
+ * Return the correct endian helper for uint16_t.
  */
 static pure auto autoEndianConvert(uint16_t v) @safe @nogc nothrow
 {
@@ -171,7 +171,7 @@ static pure auto autoEndianConvert(uint16_t v) @safe @nogc nothrow
 }
 
 /**
- * Internal helper to convert between endians
+ * Internal helper to convert between endian formats.
  */
 static void orderHelper(T, string funcer)(ref T v) @safe @nogc nothrow
 {
@@ -198,7 +198,7 @@ static void orderHelper(T, string funcer)(ref T v) @safe @nogc nothrow
 }
 
 /**
- * Convert struct members to host order
+ * Convert struct members to host order.
  */
 pragma(inline, true) public void toHostOrder(T)(ref T v) @safe @nogc nothrow
 {
@@ -206,7 +206,7 @@ pragma(inline, true) public void toHostOrder(T)(ref T v) @safe @nogc nothrow
 }
 
 /**
- * Convert struct members to network order
+ * Convert struct members to network order.
  */
 pragma(inline, true) public void toNetworkOrder(T)(ref T v) @safe @nogc nothrow
 {

@@ -92,7 +92,7 @@ public:
     }
 
     /**
-     * Add a definition to the builder by its ID
+     * Add a definition to the builder by its ID.
      *
      * A definition is enclosed in `%(` and `)`. It provides a variable
      * that is available at "compile time", rather than run time.
@@ -127,7 +127,7 @@ public:
     }
 
     /**
-     * Add a TuningFlag to the set
+     * Add a TuningFlag to the set.
      */
     void addFlag(string name, TuningFlag flag) @safe
     {
@@ -135,7 +135,7 @@ public:
     }
 
     /**
-     * Add a TuningGroup to the set
+     * Add a TuningGroup to the set.
      */
     void addGroup(string name, TuningGroup group) @safe
     {
@@ -143,7 +143,7 @@ public:
     }
 
     /**
-     * Add a PackageDefinition to the group
+     * Add a PackageDefinition to the group.
      */
     void addPackage(string name, PackageDefinition pkg) @safe
     {
@@ -207,7 +207,7 @@ public:
     }
 
     /**
-     * Enable a specific tuning group
+     * Enable a specific tuning group.
      */
     void enableGroup(string name, string value = null) @safe
     {
@@ -242,7 +242,7 @@ public:
     }
 
     /**
-     * Disable a specific tuning group
+     * Disable a specific tuning group.
      */
     void disableGroup(string name) @safe
     {
@@ -265,7 +265,7 @@ public:
     }
 
     /**
-     * Build the final TuningFlag set
+     * Build the final TuningFlag set.
      */
     TuningFlag[] buildFlags() @safe
     {
@@ -312,7 +312,7 @@ public:
     }
 
     /**
-     * Begin tokenisation of the file, line by line
+     * Begin tokenisation of the file, line by line.
      */
     string process(const(string) input) @safe
     {

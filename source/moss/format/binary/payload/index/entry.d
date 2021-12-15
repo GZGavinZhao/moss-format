@@ -38,17 +38,23 @@ extern (C) struct IndexEntry
 {
 align(1):
 
-    /** 8-bytes, endian aware, start offset to the file */
+    /**
+     * 8-bytes, endian aware, start offset to the file.
+     */
     @AutoEndian uint64_t start;
 
-    /** 8-bytes, endian aware, end offset of the file */
+    /**
+     * 8-bytes, endian aware, end offset of the file.
+     */
     @AutoEndian uint64_t end; /* 8 bytes */
 
-    /** xxh3_128bit hash digest */
+    /**
+     * xxh3_128bit hash digest.
+     */
     ubyte[16] digest = 0;
 
     /**
-     * Encode the IndexEntry to the underlying stream
+     * Encode the IndexEntry to the underlying stream.
      */
     void encode(scope WriterToken wr) @trusted
     {
@@ -61,7 +67,7 @@ align(1):
     }
 
     /**
-     * Decode the entry itself from a given input stream
+     * Decode the entry itself from a given input stream.
      */
     void decode(scope ReaderToken rd) @trusted
     {
@@ -71,7 +77,7 @@ align(1):
     }
 
     /**
-     * Compute the size of the associated content
+     * Compute the size of the associated content.
      */
     pragma(inline, true) pure @property uint64_t contentSize() @safe @nogc nothrow const
     {
@@ -79,7 +85,7 @@ align(1):
     }
 
     /**
-     * Return hex encoded string of the digest
+     * Return hex encoded string of the digest.
      */
     pragma(inline, true) pure @property auto digestString() @safe @nogc nothrow const
     {

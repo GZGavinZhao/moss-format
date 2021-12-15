@@ -33,25 +33,39 @@ public import moss.format.binary.writer.token : WriterToken;
  */
 enum PayloadType : uint8_t
 {
-    /** Catch errors: Payload type should be known */
+    /**
+     * Catch errors: Payload type should be known.
+     */
     Unknown = 0,
 
-    /** The Metadata store */
+    /**
+     * The Metadata store.
+     */
     Meta = 1,
 
-    /** File store, i.e. hash indexed */
+    /**
+     * File store, i.e. hash-indexed.
+     */
     Content = 2,
 
-    /** Map Files to Disk with basic UNIX permissions + types */
+    /**
+     * Map Files to Disk with basic UNIX permissions + types.
+     */
     Layout = 3,
 
-    /** For indexing the deduplicated store */
+    /**
+     * For indexing the deduplicated store.
+     */
     Index = 4,
 
-    /** Attribute storage */
+    /**
+     * Attribute storage.
+     */
     Attributes = 5,
 
-    /* For Writer interim */
+    /**
+     * For Writer interim.
+     */
     Dumb = 6,
 }
 
@@ -100,7 +114,7 @@ public:
     }
 
     /**
-     * Return the associated PayloadType enum for encoding/decoding purposes
+     * Return the associated PayloadType enum for encoding/decoding purposes.
      */
     pure final @property PayloadType payloadType() @safe @nogc nothrow
     {
@@ -109,7 +123,7 @@ public:
 
     /**
      * Return the version property of the PayloadData to facilitate
-     * conditional processing
+     * conditional processing.
      */
     pure final @property uint16_t payloadVersion() @safe @nogc nothrow
     {
@@ -126,7 +140,7 @@ public:
     }
 
     /**
-     * Return the number of records within a Data Payload
+     * Return the number of records within a Data Payload.
      */
     pure final @property uint32_t recordCount() @safe @nogc nothrow
     {
@@ -165,7 +179,7 @@ public:
 package:
 
     /**
-     * Set the currently employed payloadVersion
+     * Set the currently employed payloadVersion.
      */
     pure final @property void payloadVersion(uint16_t payloadVersion) @safe @nogc nothrow
     {
@@ -173,7 +187,7 @@ package:
     }
 
     /**
-     * Set the StorageType to something other than Data, the default
+     * Set the StorageType to something other than Data, the default.
      */
     pure final @property void storageType(StorageType storageType) @safe @nogc nothrow
     {
@@ -193,7 +207,7 @@ protected:
 private:
 
     /**
-     * Private property method to set the payloadType
+     * Private property method to set the payloadType.
      */
     @property void payloadType(PayloadType newType) @safe
     {

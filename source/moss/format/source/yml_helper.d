@@ -71,7 +71,7 @@ void setValueArray(T)(ref Node node, ref T value)
 {
     import std.exception : enforce;
 
-    /* We can support a single value *or* a list. */
+    /* We can support a single value *or* a list */
     enforce(node.nodeID != NodeID.mapping, "Expected " ~ T.stringof ~ " for " ~ node.tag);
 
     switch (node.nodeID)
@@ -92,7 +92,7 @@ void setValueArray(T)(ref Node node, ref T value)
 
 /**
  * Parse a section in the YAML by the given input node + section, setting as
- * many automatic values as possible using our UDA helper system
+ * many automatic values as possible using our UDA helper system.
  */
 void parseSection(T)(ref Node node, ref T section) @system
 {

@@ -27,7 +27,7 @@ public import moss.format.binary.payload;
 import moss.format.binary.payload.meta.record_pair;
 
 /**
- * The currently writing version for MetaPayload
+ * The currently writing version for MetaPayload.
  */
 const uint16_t metaPayloadVersion = 1;
 
@@ -54,7 +54,7 @@ public:
     }
 
     /**
-     * We ensure we're registered correctly with the Reader subsystem
+     * We ensure we're registered correctly with the Reader subsystem.
      */
     static this()
     {
@@ -64,7 +64,7 @@ public:
     }
 
     /** 
-     * Return the full pkgID for a given meta payload
+     * Return the full pkgID for a given meta payload.
      */
     string getPkgID()
     {
@@ -131,7 +131,7 @@ public:
     }
 
     /**
-     * Return the front item of the list
+     * Return the front item of the list.
      */
     ref const(RecordPair) front() @trusted @nogc nothrow const
     {
@@ -171,7 +171,7 @@ public:
     }
 
     /**
-     * Add a new Record to the pair set for future encoding
+     * Add a new Record to the pair set for future encoding.
      */
     void addRecord(T)(RecordType type, RecordTag tag, auto const ref T datum) @system
     {

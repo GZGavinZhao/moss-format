@@ -38,7 +38,7 @@ public abstract class ReaderToken
     @disable this();
 
     /**
-     * Supertype constructor to handle data storage
+     * Supertype constructor to handle data storage.
      */
     this(ref ubyte[] rangedData)
     {
@@ -46,7 +46,7 @@ public abstract class ReaderToken
     }
 
     /**
-     * TODO: Remove or rework this API
+     * TODO: Remove or rework this API.
      *
      * Attempts to read data from the stream and de-serialise into a C-style
      * struct.
@@ -61,7 +61,7 @@ public abstract class ReaderToken
     }
 
     /**
-     * Return a slice from the underlying stream with the given length
+     * Return a slice from the underlying stream with the given length.
      */
     final ubyte[] readData(uint64_t length)
     {
@@ -74,7 +74,7 @@ public abstract class ReaderToken
     abstract ubyte[] decodeData(uint64_t length) @trusted;
 
     /**
-     * Return a copy of the underlying header
+     * Return a copy of the underlying header.
      */
     pure @property PayloadHeader header() @safe @nogc nothrow const
     {
@@ -84,7 +84,7 @@ public abstract class ReaderToken
 package:
 
     /**
-     * Set the internal PayloadHeader for decoding purposes
+     * Set the internal PayloadHeader for decoding purposes.
      */
     pure @property void header(PayloadHeader header) @safe @nogc nothrow
     {
@@ -93,7 +93,7 @@ package:
 
     /**
      * Helper function to read a raw number of bytes without conversion, and
-     * enforce safety limits
+     * enforce safety limits.
      */
     final ubyte[] readRaw(uint64_t length) @safe
     {
@@ -112,7 +112,7 @@ package:
     }
 
     /**
-     * Return how many bytes are currently left within the stream
+     * Return how many bytes are currently left within the stream.
      */
     pragma(inline, true) pure final @property uint64_t remainingBytes() @safe @nogc nothrow
     {

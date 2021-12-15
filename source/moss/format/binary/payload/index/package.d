@@ -25,7 +25,7 @@ module moss.format.binary.payload.index;
 public import moss.format.binary.payload;
 
 /**
- * The currently writing version for IndexPayload
+ * The currently writing version for IndexPayload.
  */
 const uint16_t indexPayloadVersion = 1;
 
@@ -41,7 +41,7 @@ final class IndexPayload : Payload
 public:
 
     /**
-     * Create a new instance of IndexPayload
+     * Create a new instance of IndexPayload.
      */
     this() @safe
     {
@@ -49,7 +49,7 @@ public:
     }
 
     /**
-     * We ensure we're registered correctly with the Reader subsystem
+     * We ensure we're registered correctly with the Reader subsystem.
      */
     static this()
     {
@@ -83,7 +83,7 @@ public:
     }
 
     /**
-     * Return the front item of the list
+     * Return the front item of the list.
      */
     IndexEntry front() @trusted @nogc nothrow const
     {
@@ -92,7 +92,7 @@ public:
     }
 
     /**
-     * Encode the IndexPayload to the WriterToken
+     * Encode the IndexPayload to the WriterToken.
      */
     override void encode(scope WriterToken wr) @trusted
     {
@@ -105,7 +105,7 @@ public:
     }
 
     /**
-     * Decode the IndexPayload from the ReaderToken
+     * Decode the IndexPayload from the ReaderToken.
      */
     override void decode(scope ReaderToken rdr) @trusted
     {

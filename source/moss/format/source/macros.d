@@ -41,23 +41,33 @@ struct MacroFile
 
 public:
 
-    /** A mapping of string (key) to string (value) actions */
+    /**
+     * A mapping of string (key) to string (value) actions.
+     */
     string[string] actions;
 
-    /** A mapping of string (key) to string (value) global definitions */
+    /**
+     * A mapping of string (key) to string (value) global definitions.
+     */
     string[string] definitions;
 
-    /** A mapping of string (key) to TuningFlag combinations */
+    /**
+     * A mapping of string (key) to TuningFlag combinations.
+     */
     TuningFlag[string] flags;
 
-    /** A tmapping of string (key) to TuningGroup group definitions */
+    /**
+     * A tmapping of string (key) to TuningGroup group definitions.
+     */
     TuningGroup[string] groups;
 
-    /** A list of packages predefined in the macros file */
+    /**
+     * A list of packages predefined in the macros file.
+     */
     PackageDefinition[] packages;
 
     /**
-     * Construct a Spec from the given file
+     * Construct a Spec from the given file.
      */
     this(File _file) @safe
     {
@@ -73,7 +83,7 @@ public:
     }
 
     /**
-     * Attempt to parse the input file
+     * Attempt to parse the input file.
      */
     void parse() @system
     {
@@ -87,7 +97,7 @@ public:
         }
 
         auto loader = Loader.fromFile(_file);
-        try
+        try // FIXME: Switch to SumType error type?
         {
             auto root = loader.load();
             parseMacros("actions", actions, root);
@@ -108,7 +118,7 @@ public:
 private:
 
     /**
-     * Parse all package entries
+     * Parse all package entries.
      */
     void parsePackages(ref Node root)
     {
@@ -201,6 +211,9 @@ private:
         }
     }
 
+    /**
+     * Parse tuning keys.
+     */
     void parseTuning(ref Node root)
     {
         import std.exception : enforce;
@@ -269,6 +282,9 @@ private:
         }
     }
 
+    /**
+     * Parse all macros.
+     */
     void parseMacros(string name, ref string[string] target, ref Node root)
     {
         import std.exception : enforce;

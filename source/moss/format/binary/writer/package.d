@@ -29,7 +29,7 @@ import moss.format.binary : mossFormatVersionNumber;
 import moss.format.binary.payload;
 
 /**
- * The Writer is a low-level mechanism for writing Moss binary packages
+ * The Writer is a low-level mechanism for writing Moss binary packages.
  */
 final class Writer
 {
@@ -38,7 +38,7 @@ public:
     @disable this();
 
     /**
-     * Construct a new Writer for the given filename
+     * Construct a new Writer for the given filename.
      */
     this(File file, uint32_t versionNumber = mossFormatVersionNumber) @trusted
     {
@@ -48,7 +48,7 @@ public:
     }
 
     /**
-     * Return the file type for this Writer
+     * Return the file type for this Writer.
      */
     pure @property MossFileType fileType() @safe @nogc nothrow
     {
@@ -56,7 +56,7 @@ public:
     }
 
     /**
-     * Set the file type for this Writer
+     * Set the file type for this Writer.
      */
     @property void fileType(MossFileType type) @safe @nogc nothrow
     {
@@ -68,7 +68,7 @@ public:
      * This is used for every payload, and it is not currently possible
      * to set on a per-payload basis.
      *
-     * Currently the default compression type is ZSTD
+     * Currently the default compression type is ZSTD.
      */
     pure @property PayloadCompression compressionType() @safe @nogc nothrow
     {
@@ -175,7 +175,7 @@ public:
     }
 
     /**
-     * Add Payload to the stream for encoding
+     * Add Payload to the stream for encoding.
      */
     void addPayload(Payload p) @safe
     {

@@ -55,52 +55,84 @@ enum RecordTag : uint16_t
 {
     @(RecordType.Unknown) Unknown = 0,
 
-    /** Name of the package */
+    /**
+     * Name of the package.
+     */
     @(RecordType.String) Name = 1,
 
-    /** Architecture of the package */
+    /**
+     * Architecture of the package.
+     */
     @(RecordType.String) Architecture = 2,
 
-    /** Version of the package */
+    /**
+     * Version of the package.
+     */
     @(RecordType.String) Version = 3,
 
-    /** Summary of the package */
+    /**
+     * Summary of the package.
+     */
     @(RecordType.String) Summary = 4,
 
-    /** Description of the package */
+    /**
+     * Description of the package.
+     */
     @(RecordType.String) Description = 5,
 
-    /** Homepage for the package */
+    /**
+     * Homepage for the package.
+     */
     @(RecordType.String) Homepage = 6,
 
-    /** ID for the source package, used for grouping */
+    /**
+     * ID for the source package, used for grouping.
+     */
     @(RecordType.String) SourceID = 7,
 
-    /** Runtime dependencies */
+    /**
+     * Runtime dependencies.
+     */
     @(RecordType.Dependency) Depends = 8,
 
-    /** Provides some capability or name */
+    /**
+     * Provides some capability or name.
+     */
     @(RecordType.Provider) Provides = 9,
 
-    /** Conflicts with some capability or name */
+    /**
+     * Conflicts with some capability or name.
+     */
     @(RecordType.Unknown) Conflicts = 10,
 
-    /** Release number for the package */
+    /**
+     * Release number for the package.
+     */
     @(RecordType.Uint64) Release = 11,
 
-    /** SPDX license identifier */
+    /**
+     * SPDX license identifier.
+     */
     @(RecordType.String) License = 12,
 
-    /** Currently recorded build number */
+    /**
+     * Currently recorded build number.
+     */
     @(RecordType.Uint64) BuildRelease = 13,
 
-    /** Repository index specific (relative URI) */
+    /**
+     * Repository index specific (relative URI).
+     */
     @(RecordType.String) PackageURI = 14,
 
-    /** Repository index specific (Package hash) */
+    /**
+     * Repository index specific (Package hash).
+     */
     @(RecordType.String) PackageHash = 15,
 
-    /** Repository index specific (size on disk) */
+    /**
+     * Repository index specific (size on disk).
+     */
     @(RecordType.Uint64) PackageSize = 16,
 }
 
@@ -117,20 +149,28 @@ extern (C) struct Record
 {
 align(1):
 
-    /** 4 bytes, endian-aware, total length of the record value */
+    /**
+     * 4 bytes, endian-aware, total length of the record value.
+     */
     @AutoEndian uint32_t length;
 
-    /** 2 bytes, endian-aware, tag for the Record _contextual type_ */
+    /**
+     * 2 bytes, endian-aware, tag for the Record _contextual type_.
+     */
     @AutoEndian RecordTag tag;
 
-    /** 1 byte, key type for the record, i.e. data value type */
+    /**
+     * 1 byte, key type for the record, i.e. data value type.
+     */
     RecordType type;
 
-    /** Reserved, 1 byte padding */
+    /**
+     * Reserved, 1 byte padding.
+     */
     ubyte[1] padding = 0;
 
     /**
-     * Encode the Record key into the given WriterToken
+     * Encode the Record key into the given WriterToken.
      */
     void encode(scope WriterToken wr) @trusted
     {
@@ -144,7 +184,7 @@ align(1):
     }
 
     /**
-     * Decode the record itself from a given input stream
+     * Decode the record itself from a given input stream.
      */
     void decode(scope ReaderToken rd) @trusted
     {
@@ -154,7 +194,7 @@ align(1):
     }
 
     /**
-     * Ensure Records aren't insane
+     * Ensure Records aren't insane.
      */
     void validate() @safe
     {

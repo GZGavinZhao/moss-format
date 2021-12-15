@@ -29,7 +29,7 @@ public import moss.format.binary.writer.token;
 import std.zlib : Compress;
 
 /**
- * The Zlib is responsible for zlib stream encoding
+ * The Zlib is responsible for zlib stream encoding.
  */
 final class ZlibWriterToken : WriterToken
 {
@@ -37,7 +37,7 @@ final class ZlibWriterToken : WriterToken
     @disable this();
 
     /**
-     * Construct new ZlibWriterToken from the given file pointer
+     * Construct new ZlibWriterToken from the given file pointer.
      */
     this(FILE* fp) @trusted
     {
@@ -47,7 +47,7 @@ final class ZlibWriterToken : WriterToken
     }
 
     /**
-     * Encode data via the zlib APIs
+     * Encode data via the zlib APIs.
      */
     override ubyte[] encodeData(ref ubyte[] data) @trusted
     {
@@ -55,7 +55,7 @@ final class ZlibWriterToken : WriterToken
     }
 
     /**
-     * Flush data via the zlib APIs
+     * Flush data via the zlib APIs.
      */
     override ubyte[] flushData() @trusted
     {

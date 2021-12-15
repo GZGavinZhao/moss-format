@@ -24,7 +24,7 @@ module moss.format.source.schema;
 
 /**
  * To simplify internal type unmarshalling we have our own basic
- * types of yaml keys
+ * types of yaml keys.
  */
 enum YamlType
 {
@@ -38,15 +38,23 @@ enum YamlType
  */
 struct YamlSchema
 {
-    /** Name of the YAML key */
+    /**
+     * Name of the YAML key.
+     */
     string name;
 
-    /** Is this a mandatory key? */
+    /**
+     * Is this a mandatory key?
+     */
     bool required = false;
 
-    /** Type of value to expect */
+    /**
+     * Type of value to expect.
+     */
     YamlType type = YamlType.Single;
 
-    /** If set, these are the acceptable string values */
+    /**
+     * If set, these are the acceptable string values.
+     */
     string[] acceptableValues;
 }

@@ -39,18 +39,18 @@ import std.digest : LetterCase, Order, toHexString;
 extern (C) public struct EntrySet
 {
     /**
-     * The underlying LayoutEntry
+     * The underlying LayoutEntry.
      */
     LayoutEntry entry;
 
     /**
-     * Final destination path on disk
+     * Final destination path on disk.
      */
     string target;
 
     /**
      * Decode ourselves, LayoutEntry and associated source/target, from the input
-     * ReaderToken
+     * ReaderToken.
      */
     void decode(scope ReaderToken rdr) @trusted
     {
@@ -73,7 +73,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Return source data for copying
+     * Return source data for copying.
      */
     pure @property const(ubyte[]) data() @safe @nogc nothrow const
     {
@@ -81,7 +81,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Returns the digest for the entryset
+     * Returns the digest for the entryset.
      */
     pure @property const(ubyte[]) digest() @safe @nogc nothrow const
     {
@@ -90,7 +90,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Return digest as a string
+     * Return digest as a string.
      */
     pure @property auto digestString() @trusted nothrow const
     {
@@ -98,7 +98,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Return the symlink origin
+     * Return the symlink source.
      */
     pure @property const(string) symlinkSource() @trusted nothrow const
     {
@@ -108,7 +108,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Encode the EntrySet to the underlying stream
+     * Encode the EntrySet to the underlying stream.
      */
     void encode(scope WriterToken wr) @trusted
     {
@@ -124,7 +124,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Encode this entry set into a ubyte sequence
+     * Encode this entry set into a ubyte sequence.
      */
     ImmutableDatum mossEncode()
     {
@@ -132,7 +132,7 @@ extern (C) public struct EntrySet
     }
 
     /**
-     * Decode this EntrySet from a ubyte sequence
+     * Decode this EntrySet from a ubyte sequence.
      */
     void mossDecode(in ImmutableDatum rawBytes)
     {

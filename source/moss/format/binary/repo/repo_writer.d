@@ -39,7 +39,7 @@ import moss.core : computeSHA256;
 public final class RepoWriter
 {
     /**
-     * Construct a new RepoWriter
+     * Construct a new RepoWriter.
      */
     this(const(string) outputDir) @safe
     {
@@ -53,7 +53,7 @@ public final class RepoWriter
     }
 
     /**
-     * Close the repository index emission
+     * Close the repository index emission.
      */
     void close()
     {
@@ -61,7 +61,7 @@ public final class RepoWriter
     }
 
     /**
-     * Return the output directory for the RepoWriter
+     * Return the output directory for the RepoWriter.
      */
     pure @property const(string) outputDir() @safe @nogc nothrow
     {
@@ -69,7 +69,7 @@ public final class RepoWriter
     }
 
     /**
-     * Add a package to the index
+     * Add a package to the index.
      */
     void addPackage(const(string) inpPath, const(string) packageURI)
     {

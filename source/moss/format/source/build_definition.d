@@ -76,7 +76,7 @@ public struct BuildDefinition
     @YamlSchema("environment") string buildEnvironment = null;
 
     /**
-     * Build dependencies
+     * Build dependencies.
      *
      * We list build dependencies in a format suitable for consumption
      * by the package manager.
@@ -87,7 +87,7 @@ public struct BuildDefinition
     BuildDefinition* parent = null;
 
     /**
-     * Return the relevant setup step
+     * Return the relevant setup step.
      */
     string setup() @safe
     {
@@ -105,7 +105,7 @@ public struct BuildDefinition
     }
 
     /**
-     * Return the relevant build step
+     * Return the relevant build step.
      */
     string build() @safe
     {
@@ -123,7 +123,7 @@ public struct BuildDefinition
     }
 
     /**
-     * Return the relevant install step
+     * Return the relevant install step.
      */
     string install() @safe
     {
@@ -141,7 +141,7 @@ public struct BuildDefinition
     }
 
     /**
-     * Return the relevant check step
+     * Return the relevant check step.
      */
     string check() @safe
     {
@@ -159,7 +159,7 @@ public struct BuildDefinition
     }
 
     /**
-     * Return the relevant PGO workload step
+     * Return the relevant PGO workload step.
      */
     string workload() @safe
     {
@@ -178,7 +178,7 @@ public struct BuildDefinition
     }
 
     /**
-     * Return the relevant build environment output
+     * Return the relevant build environment output.
      */
     string environment() @safe
     {

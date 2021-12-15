@@ -25,7 +25,7 @@ module moss.format.binary.payload.content;
 public import moss.format.binary.payload;
 
 /**
- * The currently writing version for ContentPayload
+ * The currently writing version for ContentPayload.
  */
 const uint16_t contentPayloadVersion = 1;
 
@@ -50,7 +50,7 @@ final class ContentPayload : Payload
 public:
 
     /**
-     * Create a new instance of ContentPayload
+     * Create a new instance of ContentPayload.
      */
     this() @safe
     {
@@ -58,7 +58,7 @@ public:
     }
 
     /**
-     * We ensure we're registered correctly with the Reader subsystem
+     * We ensure we're registered correctly with the Reader subsystem.
      */
     static this()
     {
@@ -68,7 +68,7 @@ public:
     }
 
     /**
-     * Encode the ContentPayload to the WriterToken
+     * Encode the ContentPayload to the WriterToken.
      */
     override void encode(scope WriterToken wr) @trusted
     {
@@ -78,7 +78,7 @@ public:
     }
 
     /**
-     * Decode the IndexPayload from the ReaderToken
+     * Decode the IndexPayload from the ReaderToken.
      */
     override void decode(scope ReaderToken rdr) @trusted
     {
@@ -88,7 +88,7 @@ public:
     }
 
     /**
-     * Enqueue a file for processing/encoding
+     * Enqueue a file for processing/encoding.
      */
     void addFile(in ubyte[16] digest, in string path) @trusted
     {
@@ -101,7 +101,7 @@ public:
     }
 
     /**
-     * Encode a single file to the stream
+     * Encode a single file to the stream.
      */
     void encodeOne(ref ContentEntry entry, scope WriterToken wr) @trusted
     {

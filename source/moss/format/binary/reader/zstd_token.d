@@ -45,7 +45,7 @@ public final class ZstdReaderToken : ReaderToken
     }
 
     /**
-     * Decode up to LENGTH bytes from the stream and pass it back,
+     * Decode up to LENGTH bytes from the stream and pass it back.
      */
     override ubyte[] decodeData(uint64_t length) @trusted
     {

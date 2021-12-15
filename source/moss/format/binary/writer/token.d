@@ -56,7 +56,7 @@ public abstract class WriterToken
     }
 
     /**
-     * Flush all encodings, returning the remainder
+     * Flush all encodings, returning the remainder.
      */
     abstract ubyte[] flushData() @trusted
     {
@@ -64,7 +64,7 @@ public abstract class WriterToken
     }
 
     /**
-     * Append data to the stream, updating the known sizes + checksum
+     * Append data to the stream, updating the known sizes + checksum.
      */
     final void appendData(ubyte[] data)
     {
@@ -84,7 +84,7 @@ public abstract class WriterToken
     }
 
     /**
-     * Flush any remaining data to the stream
+     * Flush any remaining data to the stream.
      */
     final void flush()
     {
@@ -120,7 +120,7 @@ public abstract class WriterToken
 package:
 
     /**
-     * Begin encoding by emitting a Dumb header
+     * Begin encoding by emitting a Dumb header.
      */
     final void begin() @trusted
     {
@@ -137,7 +137,7 @@ package:
     }
 
     /**
-     * End encoding by flushing underlying streams
+     * End encoding by flushing underlying streams.
      */
     final void end() @trusted
     {
@@ -146,7 +146,7 @@ package:
     }
 
     /**
-     * Return the file pointer property
+     * Return the file pointer property.
      */
     pragma(inline, true) pure final @property FILE* fp() @safe @nogc nothrow
     {
@@ -154,7 +154,7 @@ package:
     }
 
     /**
-     * Return the total size when decompressed
+     * Return the total size when decompressed.
      */
     pragma(inline, true) pure final @property uint64_t sizePlain() @safe @nogc nothrow
     {
@@ -162,7 +162,7 @@ package:
     }
 
     /**
-     * Return the total size when compressed
+     * Return the total size when compressed.
      */
     pragma(inline, true) pure final @property uint64_t sizeCompressed() @safe @nogc nothrow
     {
@@ -170,7 +170,7 @@ package:
     }
 
     /**
-     * Return the calculated XXHash3!64 value
+     * Return the calculated XXHash3!64 value.
      */
     pragma(inline, true) pure final @property ubyte[8] checksum() @safe @nogc nothrow
     {
@@ -180,7 +180,7 @@ package:
 private:
 
     /**
-     * Update the file pointer property
+     * Update the file pointer property.
      */
     pragma(inline, true) pure @property void fp(FILE* fp) @safe @nogc nothrow
     {
@@ -188,7 +188,7 @@ private:
     }
 
     /**
-     * Set the compressed size
+     * Set the compressed size.
      */
     pragma(inline, true) pure @property void sizeCompressed(uint64_t newSize) @safe @nogc nothrow
     {
@@ -196,7 +196,7 @@ private:
     }
 
     /**
-     * Set the plain size
+     * Set the plain size.
      */
     pragma(inline, true) pure @property void sizePlain(uint64_t newSize) @safe @nogc nothrow
     {
@@ -204,7 +204,7 @@ private:
     }
 
     /**
-     * Set the known checksum value
+     * Set the known checksum value.
      */
     pragma(inline, true) pure @property void checksum(ubyte[8] newChecksum) @safe @nogc nothrow
     {
@@ -227,7 +227,7 @@ final class PlainWriterToken : WriterToken
     @disable this();
 
     /**
-     * Construct new PlainWriterToken from the given file pointer
+     * Construct new PlainWriterToken from the given file pointer.
      */
     this(FILE* fp) @safe
     {
