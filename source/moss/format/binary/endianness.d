@@ -173,7 +173,7 @@ static pure auto autoEndianConvert(uint16_t v) @safe @nogc nothrow
 /**
  * Internal helper to convert between endian formats.
  */
-static void orderHelper(T, string funcer)(ref T v) @safe @nogc nothrow
+static void orderHelper(T, string funcer)(ref T v) @safe @nogc nothrow // FIXME: This seems underdocumented and "magic"
 {
     import std.traits : hasUDA, moduleName;
 

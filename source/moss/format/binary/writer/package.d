@@ -31,7 +31,7 @@ import moss.format.binary.payload;
 /**
  * The Writer is a low-level mechanism for writing Moss binary packages.
  */
-final class Writer
+final class Writer // FIXME: The above blurb desperately needs an explanation of the process?
 {
 
 public:
@@ -104,7 +104,7 @@ public:
     /**
      * Flush all payloads to disk.
      */
-    void flush() @trusted
+    void flush() @trusted // FIXME: Return SumType error type?
     {
         import std.exception : enforce;
         import core.stdc.stdio : fseek, SEEK_CUR, SEEK_SET;
@@ -154,6 +154,7 @@ public:
             pHdr.checksum = wk.checksum;
             pHdr.numRecords = p.recordCount;
 
+            // FIXME: Explain why this is necessary? Seems pretty important to know/understand...
             correctedHeaders ~= pHdr;
         }
 
@@ -177,7 +178,7 @@ public:
     /**
      * Add Payload to the stream for encoding.
      */
-    void addPayload(Payload p) @safe
+    void addPayload(Payload p) @safe // FIXME: Return SumType error type?
     {
         import std.exception : enforce;
 
@@ -190,7 +191,7 @@ public:
      * Write the ArchiveHeader segment for the moss archive. This can only be
      * written once.
      */
-    void writeHeaderSegment() @trusted
+    void writeHeaderSegment() @trusted // FIXME: Return SumType error type?
     {
         import std.exception : enforce;
 

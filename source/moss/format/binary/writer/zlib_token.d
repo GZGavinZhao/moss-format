@@ -38,6 +38,9 @@ final class ZlibWriterToken : WriterToken
 
     /**
      * Construct new ZlibWriterToken from the given file pointer.
+     *
+     * Set to Zlib compression level 6 by default as that has shown itself to
+     * be a decent compromise in terms of space/time tradeoff.
      */
     this(FILE* fp) @trusted
     {
@@ -64,6 +67,6 @@ final class ZlibWriterToken : WriterToken
 
 private:
 
-    /* Used for zlib APIS */
+    /* Used for zlib APIs */
     Compress compressor;
 }

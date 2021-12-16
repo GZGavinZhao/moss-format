@@ -38,6 +38,9 @@ final class ZstdWriterToken : WriterToken
 
     /**
      * Construct new ZstdWriterToken from the given file pointer.
+     *
+     * Set to Zstd compression level 16 by default as that has shown itself to
+     * be a decent compromise in terms of space/time tradeoff.
      */
     this(FILE* fp) @trusted
     {
@@ -64,6 +67,6 @@ final class ZstdWriterToken : WriterToken
 
 private:
 
-    /* Used for zstd APIS */
+    /* Used for zstd APIs */
     Compressor compressor;
 }

@@ -72,6 +72,8 @@ enum MossFileType : uint8_t
  * All other information is contained within the subsequent records
  * and tagged with the relevant information, ensuring the format doesn't
  * become too restrictive.
+ *
+ * Length: 32 bytes (cache line friendly).
  */
 extern (C) struct ArchiveHeader
 {
@@ -118,7 +120,7 @@ align(1):
     /**
      * Encode the ArchiveHeader to the underlying file stream.
      */
-    void encode(scope FILE* fp) @trusted
+    void encode(scope FILE* fp) @trusted // FIXME: SumType error type return value?
     {
         import std.stdio : fwrite;
         import std.exception : enforce;
@@ -140,7 +142,7 @@ align(1):
     /**
      * Decode this ArchiveHeader from the underlying file stream.
      */
-    uint64_t decode(scope ubyte[] byteStream) @trusted
+    uint64_t decode(scope ubyte[] byteStream) @trusted // FIXME: SumType error return value?
     {
         import std.exception : enforce;
 
@@ -159,7 +161,7 @@ align(1):
     /**
      * Ensure that a ArchiveHeader is actually valid before proceeding.
      */
-    void validate() @safe
+    void validate() @safe // FIXME: SumType error return value?
     {
         import std.exception : enforce;
 

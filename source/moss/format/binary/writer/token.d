@@ -29,7 +29,7 @@ import moss.format.binary.payload.header;
 
 /**
  * A WriterToken implementation knows how to perform various compression
- * techniques, CRC64ISO verification, etc.
+ * techniques, hash/checksum verification, etc.
  */
 public abstract class WriterToken
 {
@@ -66,7 +66,7 @@ public abstract class WriterToken
     /**
      * Append data to the stream, updating the known sizes + checksum.
      */
-    final void appendData(ubyte[] data)
+    final void appendData(ubyte[] data) // FIXME: Return SumType error type?
     {
         import std.exception : enforce;
         import core.stdc.stdio : fwrite;
@@ -86,7 +86,7 @@ public abstract class WriterToken
     /**
      * Flush any remaining data to the stream.
      */
-    final void flush()
+    final void flush() // FIXME: Return SumType error type?
     {
         import core.stdc.stdio : fwrite;
         import std.exception : enforce;
@@ -111,7 +111,7 @@ public abstract class WriterToken
     /**
      * Append a single byte to the stream.
      */
-    final void appendData(ubyte datum)
+    final void appendData(ubyte datum) // FIXME: Return SumType error type?
     {
         ubyte[1] data = [datum];
         appendData(data);
