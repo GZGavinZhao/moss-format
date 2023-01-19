@@ -59,7 +59,7 @@ struct GitUpstreamDefinition
     @YamlSchema("ref", true) string refID;
 
     /** Directory to clone the git source to */
-    @YamlSchema("clonedir") string clonedir;
+    @YamlSchema("clonedir") string clonedir = ".";
 }
 
 /**
